@@ -1,0 +1,219 @@
+@import "./../../assets/sass/base/_mixins.scss";
+
+.detailPage {
+  max-width: 895px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.product {
+  display: flex;
+  margin-bottom: 20px;
+  @include media(768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.slider {
+  position: relative;
+  flex: 0 1 500px;
+  margin-right: 10px;
+  max-width: 500px;
+  max-height: 500px;
+  overflow: hidden;
+  @include media(768px) {
+    min-width: 320px;
+    width: 80%;
+    margin: 0 0 20px 0;
+  }
+  @include media(500px) {
+    flex-basis: 350px;
+  }
+  .slidesWrapper {
+
+  }
+  &__item {
+    height: 500px;
+    @include media(500px) {
+      height: 350px
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .arrows {
+    &__left, &__right {
+      position: absolute;
+      height: 100%;
+      width: 50px;
+      background-color: rgba(255,255,255,0.42);
+      top: 0;
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    &__left {
+      left: 0;
+      img {
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+    }
+    &__right {
+      right: 0;
+    }
+  }
+}
+
+.productDescr {
+  max-width: 376px;
+  @include media(768px) {
+    max-width: 100%;
+    text-align: center;
+  }
+  .productDescrHead {
+    margin-bottom: 40px;
+    @include media(768px) {
+      margin-bottom: 20px;
+    }
+  }
+  &__title {
+    font-size: 32px;
+    font-family: 'Myriad Pro', sans-serif;
+    margin-bottom: 15px;
+  }
+  &__author {
+    font-size: 18px;
+    margin-right: 25px;
+  }
+  &__price {
+    font-size: 32px;
+    &--greenColor {
+      color: var(--green);
+    }
+  }
+  &__wisiwygEditer {
+    font-size: 18px;
+    ul {
+      & > li:first-child, li:nth-child(2), li:nth-child(4), li:nth-child(5), li:nth-child(8) {
+        margin-bottom: 26px;
+        @include media(768px) {
+          margin-bottom: 15px;
+        }
+      }
+      b {
+        font-weight: 700;
+      }
+      i {
+        font-style: italic;
+      }
+    }
+  }
+}
+
+/*---CHAT_SECTION---*/
+
+.chatWithUser {
+  margin-bottom: 15px;
+  display: flex;
+  @include media(425px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .chatTitle {
+    font-size: 14px;
+    margin-bottom: 100px;
+    @include media(600px) {
+      margin-bottom: 30px;
+    }
+    &__firstWord {
+      font-size: 30px;
+    }
+  }
+}
+
+.chatWrapper {
+  margin-right: 10px;
+  @include media(600px) {
+    margin-right: 20px;
+  }
+  @include media(425px) {
+    margin-right: 0;
+  }
+}
+
+.commentsBox {
+  padding: 0 30px;
+  max-width: 520px;
+  box-sizing: border-box;
+}
+
+.commentsItem {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 35px;
+  max-width: 415px;
+  &:last-child {
+    margin-bottom: 20px;
+  }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    top: -3px;
+    width: 25px;
+    height: 25px;
+
+  }
+  &--left {
+    &::after {
+      left: -30px;
+      background: url("./../../assets/img/userAllisKim.png") no-repeat;
+      background-size: 25px 25px;
+    }
+  }
+  &--right {
+    justify-content: flex-end;
+    &::after {
+      right: -30px;
+      background: url('./../../assets/img/userAvatar.png') no-repeat;
+      background-size: 25px 25px;
+    }
+  }
+  &__text {
+    &--left {
+      padding-right: 2px;
+      border-right: 5px solid var(--blue);
+    }
+    &--right {
+      padding-left: 7px;
+      border-left: 5px solid var(--blue);
+    }
+  }
+}
+
+
+.connectedUsers {
+  padding-top: 30px;
+  @include media(425px) {
+    padding-top: 0;
+    margin-bottom: 15px;
+  }
+  &__title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  &__wrapper {
+    @include media(425px) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@import "./../../assets/sass/base/_mixins.scss";
+
+.loginPage {
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  background: url("./../../assets/img/loginPageBg.png") no-repeat;
+  background-size: calc(100% - 385px) 100%;
+}
+.signWrapper {
+  flex: 0 0 385px;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding-top: 74px;
+  background-color: var(--blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  font-family: 'Arial MT', sans-serif;
+  @include media(678px) {
+    flex: 1;
+  }
+}
+.signLogoWrap {
+  margin-bottom: 107px;
+}
+.signTabWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 335px;
+  .tabBtn {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    &__item {
+      display: block;
+      position: relative;
+      background-color: var(--whiteLoginPage);
+      width: 150px;
+      text-align: center;
+      padding: 14px 0 9px;
+      color: var(--grayText);
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        background-color: var(--green);
+        width: 0;
+        height: 5px;
+        bottom:0;
+        left: 0;
+        transition: .6s;
+      }
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+  .active {
+    &::after {
+      width: 100%;
+    }
+  }
+  .tabContent {
+    width: 100%;
+    &__item {
+      display: none;
+      flex-direction: column;
+      .signInEmail {
+        margin-bottom: 30px;
+      }
+      .signInPswr {
+        margin-bottom: 35px;
+      }
+      .signInEmail, .signInPswr {
+        ::-webkit-input-placeholder {color: var(--whiteLoginPage);}
+        border-bottom: 5px solid var(--whiteLoginPage);
+        padding-bottom: 5px;
+        padding-left: 15px;
+        color: var(--whiteLoginPage);
+      }
+      .signInSubmit {
+        padding: 14px 0 9px;
+        color: var(--grayText);
+        background-color: var(--whiteLoginPage)
+      }
+    }
+    .show {
+      display: flex;
+    }
+  }
+}
+
+.footerLoginPage {
+  flex:1;
+  display: flex;
+  align-items: flex-end;
+  color: var(--whiteLoginPage);
+  &__copy {
+    padding:22px 0;
+  }
+}

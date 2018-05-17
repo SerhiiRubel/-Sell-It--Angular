@@ -1,0 +1,118 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/sass/base/_base.scss";
+@import "assets/sass/base/_mixins.scss";
+
+/*---CSS_VARIABLES---*/
+:root {
+  --white: #fff;
+  --whiteLoginPage: #f2f2f2;
+  --blue: #00b3be;
+  --green: #91d763;
+  --grayText: #4a4a4a;
+}
+
+/*---THEMES---*/
+
+.form {
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  box-sizing: border-box;
+  padding-right: 5px;
+  &--loginPage {
+    width: 450px / 1440px * 100%;
+    min-width: 310px;
+  }
+  &--search {
+    min-width: 300px;
+    flex: 0 1 450px;
+    margin-right: 23%;
+    @include media(960px) {
+      width: 60%;
+      max-height: 25px;
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+  }
+  &--addComment {
+    padding-left: 10px;
+  }
+  &--borderColor {
+    border-bottom: 1px solid var(--blue);
+  }
+  &--whiteBorder {
+    @include media(678px) {
+      border-bottom: 4px solid var(--white);
+    }
+  }
+  &__searchSubmit {
+    width: 11px;
+    height: 11px;
+    background: url("./assets/img/searchIcon.png") 50% 50% no-repeat;
+    background-size: 11px 11px;
+    margin-right: 6px;
+  }
+  &__searchInput, &__addCommentInput {
+    flex: 1;
+  }
+  &__searchInput {
+    font-size: 14px;
+    &--whiteColor {
+      @include media(678px) {
+        &::-webkit-input-placeholder {color: white;}
+        color: var( --white );
+      }
+    }
+  }
+  &__addCommentInput {
+    font-size: 12px;
+  }
+  &__addCommentSubmit {
+    width: 12px;
+    height: 12px;
+    background: url("./assets/img/addCommentSubmitIcon.png") no-repeat;
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  &--usrMenuIndent {
+
+  }
+  &--connectedUsrIndent {
+    margin-bottom: 15px;
+    @include media(425px) {
+      margin: 0 10px 10px 0;
+    }
+  }
+  &__avatar {
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    margin-right: 14px;
+  }
+  &__name {
+    font-family: 'Arial MT Bold', sans-serif;
+    &--whiteColor {
+      color: var(--white);
+    }
+    &--grayColor {
+      color: var(--grayText);
+    }
+  }
+}
+
+.linkToUserPage {
+  &--inProductDescr {
+    font-size: 18px;
+  }
+  &--inChat {
+    font-size: 14px;
+  }
+  &--blue {
+    color: var(--blue);
+  }
+}
