@@ -11,8 +11,8 @@ export class ScrollToTopDirective {
   }
 
   @HostListener('window:scroll', ['$event']) onScroll() {
-    let clientHeight: number = event.target.documentElement.clientHeight;
-    let currentScroll: number = event.currentTarget.pageYOffset;
+    let clientHeight: number = window.innerHeight;
+    let currentScroll: number = window.pageYOffset;
     currentScroll > clientHeight ? this.showBtn('block') : this.showBtn('none');
   }
   private showBtn(value: string) {
