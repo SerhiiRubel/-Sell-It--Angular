@@ -11,6 +11,8 @@ import {LoggerService} from './services/log.service';
 import {ProductPageComponent} from './product-page/product-page.component';
 import {InfinityScrollDirective} from './directives/infinityScroll.directive';
 import {ScrollToTopDirective} from './directives/scrollToTop.directive';
+import { NotFoundComponent } from './not-found/not-found.component';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import {ScrollToTopDirective} from './directives/scrollToTop.directive';
     HeaderComponent,
     FooterComponent,
     InfinityScrollDirective,
-    ScrollToTopDirective
+    ScrollToTopDirective,
+    NotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [
     ProductDataService,
