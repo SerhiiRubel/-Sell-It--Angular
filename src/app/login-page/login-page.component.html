@@ -5,18 +5,26 @@
     </div>
     <div class="signTabWrap">
       <div class="tabBtn">
-        <a href="#" class="tabBtn__item active">Sign In</a>
-        <a href="#" class="tabBtn__item">Sign Up</a>
+        <button
+          class="tabBtn__item"
+          [class.active]="isActive"
+          (click)="changeTab(true)"
+        >Sign In</button>
+        <button
+          class="tabBtn__item"
+          [class.active]="!isActive"
+          (click)="changeTab(false)"
+        >Sign Up</button>
       </div>
       <div class="tabContent">
-        <form action="#" class="tabContent__item show">
-          <input class="signInEmail" type="email" placeholder="email">
-          <input class="signInPswr" type="password" placeholder="Password">
-          <button class="signInSubmit" type="submit">Log In</button>
-        </form>
-        <form class="tabContent__item">
-          SIGN UP CONTENT
-        </form>
+        <app-sign-in-form
+          (submitForm)="signIn(form)"
+          *ngIf="isActive"
+        ></app-sign-in-form>
+        <app-sign-up-form
+          *ngIf="!isActive"
+          (submitSignUp)="signUp(form)"
+        ></app-sign-up-form>
       </div>
     </div>
     <footer class="footerLoginPage">

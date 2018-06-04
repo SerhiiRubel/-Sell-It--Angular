@@ -1,16 +1,14 @@
 <app-header></app-header>
-<section class="productList" appInfinityScroll>
+  <section class="productList" appInfinityScroll (scrollDown)="getProduct()">
   <div class="productsWrapper">
-    <div *ngFor="let product of this.productDataService.changedData" class="productItem">
-      <div class="productItem__img">
-        <img src="{{product.srcImg}}" alt="hello">
-      </div>
-      <div class="productItem__descr">
-        <p class="productItem__title">
-          {{product.title}}
-        </p>
-      </div>
-    </div>
+      <app-product-item
+        *ngFor="let product of productList"
+        class="productItem"
+        [title]="product.theme"
+        [srcImg]="product.images.file"
+        [routerLink]="['detail', product.pk]"
+      >
+      </app-product-item>
   </div>
   <button type="button" class="scrollToTop" appScrollToTop></button>
 </section>

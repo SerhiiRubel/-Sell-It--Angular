@@ -1,0 +1,24 @@
+<form
+  class="tabContent__item"
+  [formGroup]="signInForm"
+  (submit)="handleSubmit()"
+>
+  <input
+    class="signInEmail input"
+    [class.alert]="signInForm.get('userEmail').errors && signInForm.get('userEmail').dirty"
+    formControlName="userEmail"
+    type="email"
+    placeholder="email">
+  <input
+    class="signInPswr input"
+    [class.alert]="signInForm.get('userPassword').errors && signInForm.get('userPassword').dirty"
+    [class.valid]="signInForm.get('userPassword').valid && signInForm.get('userPassword').dirty"
+    formControlName="userPassword"
+    type="password"
+    placeholder="Password">
+  <button
+    class="submitBtn"
+    type="submit"
+    [disabled]="!signInForm.valid"
+  >Log In</button>
+</form>

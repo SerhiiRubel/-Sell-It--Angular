@@ -65,33 +65,38 @@
   }
   .tabContent {
     width: 100%;
+    ::-webkit-input-placeholder {color: var(--whiteLoginPage);}
     &__item {
-      display: none;
+      display: flex;
       flex-direction: column;
+      .input {
+        border-bottom: 5px solid var(--whiteLoginPage);
+        padding-bottom: 5px;
+        padding-left: 15px;
+        color: var(--whiteLoginPage);
+        margin-bottom: 30px;
+      }
       .signInEmail {
         margin-bottom: 30px;
       }
       .signInPswr {
         margin-bottom: 35px;
       }
-      .signInEmail, .signInPswr {
-        ::-webkit-input-placeholder {color: var(--whiteLoginPage);}
-        border-bottom: 5px solid var(--whiteLoginPage);
-        padding-bottom: 5px;
-        padding-left: 15px;
-        color: var(--whiteLoginPage);
-      }
-      .signInSubmit {
+      .submitBtn {
         padding: 14px 0 9px;
         color: var(--grayText);
         background-color: var(--whiteLoginPage)
       }
     }
-    .show {
-      display: flex;
+    .alert {
+      border-bottom: 5px solid red;
+    }
+    .valid {
+      border-bottom: 5px solid var(--green);
     }
   }
 }
+
 
 .footerLoginPage {
   flex:1;
@@ -102,3 +107,4 @@
     padding:22px 0;
   }
 }
+

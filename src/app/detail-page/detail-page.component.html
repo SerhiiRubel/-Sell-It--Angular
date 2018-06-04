@@ -4,7 +4,7 @@
     <div class="slider">
       <div class="slidesWrapper">
         <div class="slider__item">
-          <img src="./../../assets/img/productPhoto.png" alt="product photo">
+          <img src="{{product.images[0].file}}" alt="product photo">
         </div>
         <div class="slider__item">
           <img src="./../../assets/img/productPhoto.png" alt="product photo">
@@ -24,29 +24,30 @@
     </div>
     <div class="productDescr">
       <div class="productDescrHead">
-        <h3 class="productDescr__title">Some title Text must bu here maybe second line</h3>
+        <h3 class="productDescr__title">{{product.theme}}</h3>
         <span class="productDesct__author">from
               <a href="#" class="linkToUserPage linkToUserPage--inProductDescr linkToUserPage--blue"> Alis Kim </a>
             </span>
-        <span class="productDescr__price productDescr__price--greenColor">18000 $</span>
+        <span class="productDescr__price productDescr__price--greenColor">{{product.price}} $</span>
       </div>
       <div class="productDescr__wisiwygEditer">
-        <ul>
-          <li>Some description text from WYSIWYG editer</li>
-          <li>Can be <b>BOLD</b> <i>italic</i> </li>
-          <li>Can have list :</li>
-          <li>
-            <ol>
-              <li>First</li>
-              <li>Second</li>
-            </ol>
-          </li>
-          <li><b>And anything from WYSIWYG editor</b></li>
-          <li><b>Some line</b></li>
-          <li>Some line</li>
-          <li><i>Some line</i></li>
-          <li><b>Finished on this line</b></li>
-        </ul>
+        {{product.text}}
+        <!--<ul>-->
+          <!--<li>Some description text from WYSIWYG editer</li>-->
+          <!--<li>Can be <b>BOLD</b> <i>italic</i> </li>-->
+          <!--<li>Can have list :</li>-->
+          <!--<li>-->
+            <!--<ol>-->
+              <!--<li>First</li>-->
+              <!--<li>Second</li>-->
+            <!--</ol>-->
+          <!--</li>-->
+          <!--<li><b>And anything from WYSIWYG editor</b></li>-->
+          <!--<li><b>Some line</b></li>-->
+          <!--<li>Some line</li>-->
+          <!--<li><i>Some line</i></li>-->
+          <!--<li><b>Finished on this line</b></li>-->
+        <!--</ul>-->
       </div>
     </div>
   </article>
