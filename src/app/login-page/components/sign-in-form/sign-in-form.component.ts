@@ -7,21 +7,21 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./sign-in-form.component.scss'],
 })
 export class SignInFormComponent implements OnInit {
-  public signInForm: FormGroup;
-  constructor() {
-    this.signInForm = new FormGroup({
-      userEmail: new FormControl('', [
-        Validators.required,
-        Validators.email,
-        Validators.maxLength(12)
-      ]),
-      userPassword: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(12)
-      ])
-    });
-  }
+  public signInForm: FormGroup = new FormGroup({
+    userEmail: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.maxLength(12)
+    ]),
+    userPassword: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(12)
+    ])
+  });
+  public userEmail = this.signInForm.get('userEmail');
+  public userPassword = this.signInForm.get('userPassword');
+  constructor() {}
   @Output() submitForm = new EventEmitter();
   handleSubmit() {
     this.submitForm.emit();

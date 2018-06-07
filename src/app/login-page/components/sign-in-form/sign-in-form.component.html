@@ -4,21 +4,25 @@
   (submit)="handleSubmit()"
 >
   <input
-    class="signInEmail input"
-    [class.alert]="signInForm.get('userEmail').errors && signInForm.get('userEmail').dirty"
     formControlName="userEmail"
+    class="signInEmail input"
     type="email"
     placeholder="email">
+  <app-error
+    *ngIf="userEmail.invalid && userEmail.dirty"
+    [Input]="userEmail"></app-error>
   <input
-    class="signInPswr input"
-    [class.alert]="signInForm.get('userPassword').errors && signInForm.get('userPassword').dirty"
-    [class.valid]="signInForm.get('userPassword').valid && signInForm.get('userPassword').dirty"
     formControlName="userPassword"
+    class="signInPswr input"
     type="password"
     placeholder="Password">
+  <app-error
+    *ngIf="userPassword.invalid && userPassword.dirty"
+    [Input]="userPassword"></app-error>
   <button
     class="submitBtn"
     type="submit"
     [disabled]="!signInForm.valid"
-  >Log In</button>
+  >
+    Log In</button>
 </form>

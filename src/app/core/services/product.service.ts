@@ -5,7 +5,7 @@ import {Product} from '../models/product';
 import {map} from 'rxjs/operators';
 
 @Injectable()
-export class ProductDataService {
+export class ProductService {
   public productData: Product[] = [];
   constructor(private http: HttpClient) {}
   getData(page: number = 0) {
@@ -13,8 +13,8 @@ export class ProductDataService {
       limit: '12',
       offset: '0'
     }
-    params.offset = +params.limit * page;
-    return this.http.get<Product[]>(ApiUrls.adverts, {params: params})
+    params.offset = (+params.limit * page);
+    return this.http.get(ApiUrls.adverts, {params: params})
       .pipe(
         map( response => {
           console.log(response);

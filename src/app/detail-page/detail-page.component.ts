@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductDataService} from '../core/services/productData.service';
+import {ProductService} from '../core/services/product.service';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../core/models/product';
 
@@ -11,7 +11,7 @@ import {Product} from '../core/models/product';
 export class DetailPageComponent implements OnInit {
   private product: Product;
   constructor(
-    private productDataService: ProductDataService,
+    private productDataService: ProductService,
     private route: ActivatedRoute
   ) {}
   ngOnInit() {

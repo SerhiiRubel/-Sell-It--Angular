@@ -1,1 +1,9 @@
-
+input.ng-dirty.ng-invalid {
+  border-bottom: 5px solid red;
+}
+input.ng-dirty.ng-valid {
+  border-bottom: 5px solid var(--green);
+}
+button:disabled {
+  opacity: .7;
+}

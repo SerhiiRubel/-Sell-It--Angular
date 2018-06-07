@@ -6,7 +6,7 @@ import {LoginPageComponent} from './login-page/login-page.component';
 import {DetailPageComponent} from './detail-page/detail-page.component';
 import {HeaderComponent} from './shared/components/header/header.component';
 import {FooterComponent} from './shared/components/footer/footer.component';
-import {ProductDataService} from './core/services/productData.service';
+import {ProductService} from './core/services/product.service';
 import {ProductPageComponent} from './product-page/product-page.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -18,6 +18,8 @@ import {ProductResolve} from './detail-page/product.resolve';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignInFormComponent } from './login-page/components/sign-in-form/sign-in-form.component';
 import { SignUpFormComponent } from './login-page/components/sign-up-form/sign-up-form.component';
+// import { AddAdvertComponent } from './add-advert/add-advert.component';
+import { ErrorComponent } from './shared/components/error/error.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { SignUpFormComponent } from './login-page/components/sign-up-form/sign-u
     NotFoundComponent,
     ProductItemComponent,
     SignInFormComponent,
-    SignUpFormComponent
+    SignUpFormComponent,
+    // AddAdvertComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ import { SignUpFormComponent } from './login-page/components/sign-up-form/sign-u
     FormsModule
   ],
   providers: [
-    ProductDataService,
+    ProductService,
     ProductResolve
   ],
   bootstrap: [AppComponent]

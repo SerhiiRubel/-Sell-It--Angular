@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductDataService} from '../core/services/productData.service';
+import {ProductService} from '../core/services/product.service';
 import {Product} from '../core/models/product';
 
 @Component({
@@ -9,12 +9,12 @@ import {Product} from '../core/models/product';
 })
 
 export class ProductPageComponent implements OnInit {
-  constructor( public productDataService: ProductDataService ) {}
+  constructor( public productService: ProductService ) {}
   public productList: Product[];
   public page = 1;
   public isLoading = false;
   ngOnInit() {
-    this.productDataService.getData()
+    this.productService.getData()
       .subscribe(
         response => {
           this.productList = response;
@@ -25,7 +25,7 @@ export class ProductPageComponent implements OnInit {
   getProduct() {
     if (!this.isLoading) {
       this.isLoading = true;
-      this.productDataService.getData(this.page)
+      this.productService.getData(this.page)
         .subscribe(
           response => {
             console.log(response);

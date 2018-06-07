@@ -8,41 +8,47 @@
     class="input"
     placeholder="Enter your username"
     formControlName="userName"
-    [class.alert]="signUpForm.get('userName').errors && signUpForm.get('userName').dirty"
-    [class.valid]="signUpForm.get('userName').valid && signUpForm.get('userName').dirty"
   >
+  <app-error
+    *ngIf="signUpForm.get('userName').invalid && signUpForm.get('userName').dirty"
+    [Input]="signUpForm.get('userName')">
+  </app-error>
   <input
     type="text"
     class="input"
     placeholder="Enter your fisrt name"
     formControlName="firstName"
-    [class.alert]="signUpForm.get('firstName').errors && signUpForm.get('firstName').dirty"
-    [class.valid]="signUpForm.get('firstName').valid && signUpForm.get('firstName').dirty"
   >
+  <app-error
+    *ngIf="signUpForm.get('firstName').invalid && signUpForm.get('lastName').dirty"
+    [Input]="signUpForm.get('firstName')">
+  </app-error>
   <input
     type="text"
     class="input"
     placeholder="Enter your last name"
     formControlName="lastName"
-    [class.alert]="signUpForm.get('lastName').errors && signUpForm.get('lastName').dirty"
-    [class.valid]="signUpForm.get('lastName').valid && signUpForm.get('lastName').dirty"
   >
+  <app-error
+    *ngIf="signUpForm.get('lastName').invalid && signUpForm.get('lastName').dirty"
+    [Input]="signUpForm.get('lastName')">
+  </app-error>
   <input
       type="password"
       class="input"
       placeholder="Enter password"
       formControlName="password"
-      [class.alert]="signUpForm.get('password').errors && signUpForm.get('password').dirty"
-      [class.valid]="signUpForm.get('password').valid && signUpForm.get('password').dirty"
   >
+  <app-error
+    *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').dirty"
+    [Input]="signUpForm.get('password')"></app-error>
   <input
     type="password"
     class="input"
     placeholder="Confirm password"
     formControlName="confirmPassword"
-    [class.alert]="signUpForm.get('confirmPassword').errors && signUpForm.get('confirmPassword').dirty"
-    [class.valid]="signUpForm.get('confirmPassword').valid && signUpForm.get('confirmPassword').dirty"
   >
+  <app-error *ngIf="signUpForm.get('confirmPassword').invalid && signUpForm.get('confirmPassword').dirty" [Input]="signUpForm.get('confirmPassword')"></app-error>
   <button
     type="submit"
     class="submitBtn"
