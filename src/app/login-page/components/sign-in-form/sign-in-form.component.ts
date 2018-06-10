@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-sign-in-form' ,
@@ -8,24 +9,22 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class SignInFormComponent implements OnInit {
   public signInForm: FormGroup = new FormGroup({
-    userEmail: new FormControl('', [
+    email: new FormControl('', [
       Validators.required,
-      Validators.email,
-      Validators.maxLength(12)
+      Validators.email
     ]),
-    userPassword: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(12)
+    password: new FormControl('', [
+      Validators.required
     ])
   });
-  public userEmail = this.signInForm.get('userEmail');
-  public userPassword = this.signInForm.get('userPassword');
-  constructor() {}
+  public email = this.signInForm.get('email');
+  public password = this.signInForm.get('password');
+  public errorMessage;
+  constructor(private auth: AuthService) {}
   @Output() submitForm = new EventEmitter();
   handleSubmit() {
     this.submitForm.emit();
-    console.log(this.signInForm.value);
+    this.auth.login(this.signInForm.value).subscribe();
   }
   ngOnInit() {
   }

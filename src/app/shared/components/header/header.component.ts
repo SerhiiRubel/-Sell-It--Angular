@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
+import {AuthService} from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,4 +7,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(private auth: AuthService) {}
+  public currentUser;
+  public user = this.auth.currentUser.subscribe(
+    user => this.currentUser = user
+  );
+  private logout = () => this.auth.logout();
+}

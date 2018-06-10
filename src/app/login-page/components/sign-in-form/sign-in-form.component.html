@@ -1,24 +1,24 @@
 <form
   class="tabContent__item"
   [formGroup]="signInForm"
-  (submit)="handleSubmit()"
+  (ngSubmit)="handleSubmit()"
 >
   <input
-    formControlName="userEmail"
+    formControlName="email"
     class="signInEmail input"
     type="email"
     placeholder="email">
   <app-error
-    *ngIf="userEmail.invalid && userEmail.dirty"
-    [Input]="userEmail"></app-error>
+    *ngIf="email.invalid && email.dirty"
+    [Input]="email"></app-error>
   <input
-    formControlName="userPassword"
+    formControlName="password"
     class="signInPswr input"
     type="password"
     placeholder="Password">
   <app-error
-    *ngIf="userPassword.invalid && userPassword.dirty"
-    [Input]="userPassword"></app-error>
+    *ngIf="password.invalid && password.dirty"
+    [Input]="password"></app-error>
   <button
     class="submitBtn"
     type="submit"

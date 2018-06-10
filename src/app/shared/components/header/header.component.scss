@@ -24,24 +24,96 @@
   }
 }
 
-.userMenu {
+.userMenuWrapper {
   display: flex;
-  justify-content: space-between;
   flex: 0 1 383px;
   box-sizing: border-box;
-  align-items: center;
   padding: 10px 25px;
-  max-height: 60px;
-  @include media(960px) {
-    min-width: 320px;
-    width: 90%;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  position: relative;
+  &:hover  .userMenuNav {
+    height: 60px;
   }
   &--bgColor {
     background-color: var(--blue);
   }
-  &__logout {
-    flex-shrink: 0;
-    width: 27px;
-    height: 27px;
+  @include media(960px) {
+    min-width: 320px;
+    width: 90%;
+    flex: 0;
+  }
+  .userMenu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    &--auth {
+
+    }
+    &--notAuth {
+      color: var( --white );
+      font-size: 18px;
+      font-weight: bold;
+    }
+    &__logout {
+      flex-shrink: 0;
+      width: 27px;
+      height: 27px;
+    }
   }
 }
+
+.userMenuAuthWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  &::before {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: black;
+    transition: .6s;
+    z-index: 3;
+  }
+  &:hover::before {
+    height: 120px;
+  }
+}
+
+.userMenuNav {
+  display: flex;
+  height: 0;
+  overflow: hidden;
+  transition: .6s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+  background-color: var( --blue ) ;
+  width: 100%;
+  &::after {
+    content:'';
+    display: block;
+    width: 8px;
+    height: 100%;
+    background-color: black ;
+    position: absolute;
+    left: 50%; top: 0;
+    transform: translateX(-50%);
+  }
+  &__item {
+    width: 50%;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    }
+  }

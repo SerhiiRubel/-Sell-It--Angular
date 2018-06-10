@@ -1,8 +1,8 @@
 <section class="loginPage">
   <div class="signWrapper">
-    <div class="signLogoWrap">
+    <a class="signLogoWrap" routerLink="">
       <img src="./../../assets/img/signLogo.png" alt="Sell It">
-    </div>
+    </a>
     <div class="signTabWrap">
       <div class="tabBtn">
         <button
@@ -18,12 +18,12 @@
       </div>
       <div class="tabContent">
         <app-sign-in-form
-          (submitForm)="signIn(form)"
+          (submitForm)="signIn()"
           *ngIf="isActive"
         ></app-sign-in-form>
         <app-sign-up-form
           *ngIf="!isActive"
-          (submitSignUp)="signUp(form)"
+          (submitSignUp)="signUp()"
         ></app-sign-up-form>
       </div>
     </div>

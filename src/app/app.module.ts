@@ -12,7 +12,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import {AppRoutingModule} from './app-routing.module';
 import { ScrollToTopDirective } from './shared/directives/scroll-top.directive';
 import { InfinityScrollDirective } from './shared/directives/infinity-scroll.directive';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ProductItemComponent } from './product-page/components/product-item/product-item.component';
 import {ProductResolve} from './detail-page/product.resolve';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -20,6 +20,9 @@ import { SignInFormComponent } from './login-page/components/sign-in-form/sign-i
 import { SignUpFormComponent } from './login-page/components/sign-up-form/sign-up-form.component';
 // import { AddAdvertComponent } from './add-advert/add-advert.component';
 import { ErrorComponent } from './shared/components/error/error.component';
+import {AuthInterceptor} from './core/auth.interceptor';
+import {CookieService} from 'ng2-cookies';
+import {AuthService} from './core/services/auth.service';
 
 
 @NgModule({
@@ -47,8 +50,15 @@ import { ErrorComponent } from './shared/components/error/error.component';
     FormsModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     ProductService,
-    ProductResolve
+    ProductResolve,
+    CookieService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,48 +7,38 @@
     type="text"
     class="input"
     placeholder="Enter your username"
-    formControlName="userName"
+    formControlName="username"
   >
   <app-error
-    *ngIf="signUpForm.get('userName').invalid && signUpForm.get('userName').dirty"
-    [Input]="signUpForm.get('userName')">
+    *ngIf="signUpForm.get('username').invalid && signUpForm.get('username').dirty"
+    [Input]="signUpForm.get('username')">
   </app-error>
   <input
     type="text"
     class="input"
-    placeholder="Enter your fisrt name"
-    formControlName="firstName"
+    placeholder="Enter email"
+    formControlName="email"
   >
   <app-error
-    *ngIf="signUpForm.get('firstName').invalid && signUpForm.get('lastName').dirty"
-    [Input]="signUpForm.get('firstName')">
-  </app-error>
-  <input
-    type="text"
-    class="input"
-    placeholder="Enter your last name"
-    formControlName="lastName"
-  >
-  <app-error
-    *ngIf="signUpForm.get('lastName').invalid && signUpForm.get('lastName').dirty"
-    [Input]="signUpForm.get('lastName')">
+    *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').dirty"
+    [Input]="signUpForm.get('email')">
   </app-error>
   <input
       type="password"
       class="input"
       placeholder="Enter password"
-      formControlName="password"
+      formControlName="password1"
   >
   <app-error
-    *ngIf="signUpForm.get('password').invalid && signUpForm.get('password').dirty"
-    [Input]="signUpForm.get('password')"></app-error>
+    *ngIf="signUpForm.get('password1').invalid && signUpForm.get('password1').dirty"
+    [Input]="signUpForm.get('password1')"></app-error>
   <input
     type="password"
     class="input"
     placeholder="Confirm password"
-    formControlName="confirmPassword"
+    formControlName="password2"
   >
-  <app-error *ngIf="signUpForm.get('confirmPassword').invalid && signUpForm.get('confirmPassword').dirty" [Input]="signUpForm.get('confirmPassword')"></app-error>
+  <app-error *ngIf="signUpForm.get('password2').invalid && signUpForm.get('password2').dirty" [Input]="signUpForm.get('password2')"></app-error>
   <button
     type="submit"
     class="submitBtn"

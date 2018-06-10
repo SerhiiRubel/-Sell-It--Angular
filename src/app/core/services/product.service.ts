@@ -13,8 +13,8 @@ export class ProductService {
       limit: '12',
       offset: '0'
     }
-    params.offset = (+params.limit * page);
-    return this.http.get(ApiUrls.adverts, {params: params})
+    params.offset = `${+params.limit * page}`;
+    return this.http.get<any>(ApiUrls.adverts, {params: params})
       .pipe(
         map( response => {
           console.log(response);

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -10,23 +11,22 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class SignUpFormComponent implements OnInit {
 
   public signUpForm: FormGroup;
-  constructor() {
+  constructor(private auth: AuthService) {
     this.signUpForm = new FormGroup({
-      userName: new FormControl('', [
+      username: new FormControl('', [
         Validators.required
       ]),
-      firstName: new FormControl('', [
+      email: new FormControl('', [
         Validators.required
       ]),
-      lastName: new FormControl('', [Validators.required]),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required)
+      password1: new FormControl('', Validators.required),
+      password2: new FormControl('', Validators.required)
     });
   }
   @Output() submitSignUp = new EventEmitter();
   handleSubmit() {
     this.submitSignUp.emit();
-    console.log(this.signUpForm.value);
+    this.auth.registration(this.signUpForm.value);
   }
   ngOnInit() {
   }
