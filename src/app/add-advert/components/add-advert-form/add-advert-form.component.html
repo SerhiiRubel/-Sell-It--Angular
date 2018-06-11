@@ -1,0 +1,34 @@
+<form
+  [formGroup]="addAdvert"
+  (submit)="handleSubmit()"
+>
+  <input
+    type="text"
+    formControlName="theme"
+  >
+  <textarea
+    cols="30"
+    rows="10"
+    formControlName="text"
+  ></textarea>
+  <input
+    type="text"
+    formControlName="price"
+  >
+  <input
+    type="text"
+    formControlName="currency"
+  >
+  <input
+    type="text"
+    formControlName="contractPrice"
+  >
+  <div [formGroup]="location" >
+    <input type="text" formControlName="name">
+  </div>
+  <input
+    type="checkbox"
+    formControlName="isActive"
+  >
+  <button type="submit"> Add advert </button>
+</form>

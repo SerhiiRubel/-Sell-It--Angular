@@ -18,11 +18,12 @@ import {ProductResolve} from './detail-page/product.resolve';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignInFormComponent } from './login-page/components/sign-in-form/sign-in-form.component';
 import { SignUpFormComponent } from './login-page/components/sign-up-form/sign-up-form.component';
-// import { AddAdvertComponent } from './add-advert/add-advert.component';
+import { AddAdvertComponent } from './add-advert/add-advert.component';
 import { ErrorComponent } from './shared/components/error/error.component';
 import {AuthInterceptor} from './core/auth.interceptor';
 import {CookieService} from 'ng2-cookies';
 import {AuthService} from './core/services/auth.service';
+import { AddAdvertFormComponent } from './add-advert/components/add-advert-form/add-advert-form.component';
 
 
 @NgModule({
@@ -39,8 +40,9 @@ import {AuthService} from './core/services/auth.service';
     ProductItemComponent,
     SignInFormComponent,
     SignUpFormComponent,
-    // AddAdvertComponent,
-    ErrorComponent
+    AddAdvertComponent,
+    ErrorComponent,
+    AddAdvertFormComponent
   ],
   imports: [
     BrowserModule,

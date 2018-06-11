@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {CookieService} from 'ng2-cookies';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor{
+export class AuthInterceptor implements HttpInterceptor {
   constructor(private cookie: CookieService) {}
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
