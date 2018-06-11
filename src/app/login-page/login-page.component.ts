@@ -1,5 +1,7 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormGroup} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {AuthService} from '../core/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,11 +10,19 @@ import {FormGroup} from '@angular/forms';
   encapsulation: ViewEncapsulation.None
 })
 
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
   public isActive = true;
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private auth: AuthService
+              ) {}
   changeTab(isActive: boolean) {
     this.isActive = isActive;
+  }
+  ngOnInit() {
+    this.route.queryParams.subscribe(
+      key => this.auth.verifyEmail(key)
+    );
   }
   signIn() {}
   signUp() {}

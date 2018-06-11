@@ -5,4 +5,6 @@ export class ApiUrls {
     static registration = `${environment.apiBase}/registration/`;
     static login = `${environment.apiBase}/login/`;
     static logout = `${environment.apiBase}/logout/`;
+    static profile = `${environment.apiBase}/profile/`;
+    static verifyEmail = `${environment.apiBase}/verify-email/`;
 }

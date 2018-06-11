@@ -5,18 +5,19 @@ import {ILogin, IRegistration} from '../models/forms';
 import {tap} from 'rxjs/operators';
 import {CookieService} from 'ng2-cookies';
 import {BehaviorSubject} from 'rxjs';
-import {ActivatedRoute, Route, Router} from '@angular/router';
+import {Router} from '@angular/router';
+import {ProfileService} from './profile.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public currentUser = new BehaviorSubject(false);
-
   constructor(
     private http: HttpClient,
     private cookie: CookieService,
-    private route: Router
+    private route: Router,
+    private profile: ProfileService
   ) {
   }
 
@@ -31,7 +32,9 @@ export class AuthService {
       tap(
         response => {
           this.cookie.set('token', response['token']);
-          this.currentUser.next(response['user']);
+          // this.currentUser.next(response['user']);
+          this.profile.profile$.next(response['user']);
+          localStorage.setItem('user', JSON.stringify(response['user']));
           this.route.navigate(['']);
         }
       )
@@ -44,6 +47,12 @@ export class AuthService {
         this.cookie.delete('token');
         this.currentUser.next(false);
       }
+    );
+  }
+  public verifyEmail(key) {
+    console.log('yes');
+    this.http.post(ApiUrls.verifyEmail, key).subscribe(
+      response => console.log(response)
     );
   }
 }

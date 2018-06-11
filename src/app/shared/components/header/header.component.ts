@@ -1,5 +1,6 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {AuthService} from '../../../core/services/auth.service';
+import {ProfileService} from '../../../core/services/profile.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,15 @@ import {AuthService} from '../../../core/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {
-  constructor(private auth: AuthService) {}
+export class HeaderComponent implements OnInit{
+  constructor(
+    private auth: AuthService,
+    private profile: ProfileService) {}
   public currentUser;
-  public user = this.auth.currentUser.subscribe(
-    user => this.currentUser = user
-  );
   private logout = () => this.auth.logout();
+  ngOnInit() {
+    this.profile.getProfile().subscribe(
+      response => this.currentUser = response
+    );
+  }
 }
