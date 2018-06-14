@@ -6,6 +6,7 @@ import {DetailPageComponent} from './detail-page/detail-page.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {ProductResolve} from './detail-page/product.resolve';
 import {AddAdvertComponent} from './add-advert/add-advert.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     }
   },
   { path: 'login', component: LoginPageComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'addAdvert', component: AddAdvertComponent },
   { path: '**', component: NotFoundComponent }
 ];

@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit{
   public currentUser;
   private logout = () => this.auth.logout();
   ngOnInit() {
-    this.profile.getProfile().subscribe(
+    this.profile.profile.subscribe(
       response => this.currentUser = response
     );
   }

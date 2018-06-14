@@ -1,0 +1,34 @@
+<form action=""
+    [formGroup]="profileForm"
+    (ngSubmit)="onSubmit()"
+>
+  <label>
+    username
+    <input type="text" formControlName="username">
+  </label>
+  <label>
+    First name
+    <input type="text" formControlName="first_name">
+  </label>
+  <label>
+    Last name
+    <input type="text" formControlName="last_name">
+  </label>
+  <label>
+    Avatar
+    <input type="file" formControlName="avatar">
+  </label>
+  <label>
+    Location
+    <input type="text" formControlName="location">
+  </label>
+  <label>
+    Color_sheme
+    <input type="text" formControlName="color_scheme">
+  </label>
+  <label>
+    Language
+    <input type="text" formControlName="language">
+  </label>
+  <button>Edit profile</button>
+</form>

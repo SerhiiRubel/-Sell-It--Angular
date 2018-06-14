@@ -24,6 +24,8 @@ import {AuthInterceptor} from './core/auth.interceptor';
 import {CookieService} from 'ng2-cookies';
 import {AuthService} from './core/services/auth.service';
 import { AddAdvertFormComponent } from './add-advert/components/add-advert-form/add-advert-form.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProfileFormComponent } from './profile/components/edit-profile-form/edit-profile-form.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { AddAdvertFormComponent } from './add-advert/components/add-advert-form/
     SignUpFormComponent,
     AddAdvertComponent,
     ErrorComponent,
-    AddAdvertFormComponent
+    AddAdvertFormComponent,
+    ProfileComponent,
+    EditProfileFormComponent
   ],
   imports: [
     BrowserModule,

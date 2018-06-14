@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private cookie: CookieService, private session: SessionService) {}
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const authHeader = `JWT ${this.session.token}`;
+    const authHeader = `JWT${this.session.token}`;
     if (this.session.token) {
       const authReq = req.clone({ headers: req.headers.set('Authorization', authHeader)});
       return next.handle(authReq);
