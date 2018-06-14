@@ -11,7 +11,7 @@ import {ProfileService} from './profile.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthDefaultService {
   public currentUser = new BehaviorSubject(false);
   constructor(
     private http: HttpClient,
@@ -52,6 +52,12 @@ export class AuthService {
   public verifyEmail(key) {
     console.log('yes');
     this.http.post(ApiUrls.verifyEmail, key).subscribe(
+      response => console.log(response)
+    );
+  }
+  public googleLogin(token: string) {
+    console.log(token);
+    this.http.post(ApiUrls.google, {access_token: token}).subscribe(
       response => console.log(response)
     );
   }

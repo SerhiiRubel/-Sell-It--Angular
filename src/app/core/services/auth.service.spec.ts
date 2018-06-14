@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { AuthService } from './auth.service';
+import { AuthDefaultService } from './auth-default.service';
 
-describe('AuthService', () => {
+describe('AuthDefaultService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService]
+      providers: [AuthDefaultService]
     });
   });
 
-  it('should be created', inject([AuthService], (service: AuthService) => {
+  it('should be created', inject([AuthDefaultService], (service: AuthDefaultService) => {
     expect(service).toBeTruthy();
   }));
 });

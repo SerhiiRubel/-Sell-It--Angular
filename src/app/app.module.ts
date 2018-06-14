@@ -22,8 +22,25 @@ import { AddAdvertComponent } from './add-advert/add-advert.component';
 import { ErrorComponent } from './shared/components/error/error.component';
 import {AuthInterceptor} from './core/auth.interceptor';
 import {CookieService} from 'ng2-cookies';
-import {AuthService} from './core/services/auth.service';
+import {AuthDefaultService} from './core/services/auth-default.service';
 import { AddAdvertFormComponent } from './add-advert/components/add-advert-form/add-advert-form.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './profile/components/edit-profile/edit-profile.component';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider, AuthService
+} from 'angular5-social-login';
+
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [{
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('837694048230-keo53o03s8od9ee39boib7o6prp18fs5.apps.googleusercontent.com')
+      }]
+);
+  return config;
+}
 
 
 @NgModule({
@@ -42,7 +59,9 @@ import { AddAdvertFormComponent } from './add-advert/components/add-advert-form/
     SignUpFormComponent,
     AddAdvertComponent,
     ErrorComponent,
-    AddAdvertFormComponent
+    AddAdvertFormComponent,
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +76,14 @@ import { AddAdvertFormComponent } from './add-advert/components/add-advert-form/
       useClass: AuthInterceptor,
       multi: true
     },
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    },
     ProductService,
     ProductResolve,
     CookieService,
+    AuthDefaultService,
     AuthService
   ],
   bootstrap: [AppComponent]
