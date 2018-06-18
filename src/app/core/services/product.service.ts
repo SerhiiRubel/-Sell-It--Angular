@@ -3,12 +3,13 @@ import {ApiUrls} from '../api-urls';
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
 import {map} from 'rxjs/operators';
+import {FormGroup} from '@angular/forms';
 
 @Injectable()
 export class ProductService {
   public productData: Product[] = [];
   constructor(private http: HttpClient) {}
-  getData(page: number = 0) {
+  getData(page: number) {
     const params = {
       limit: '12',
       offset: '0'
@@ -25,5 +26,10 @@ export class ProductService {
   }
   getProduct(id: number) {
     return this.http.get(`${ApiUrls.adverts}/${id}`);
+  }
+  public addAdvert(form: FormGroup) {
+    this.http.post( ApiUrls.adverts, form).subscribe(
+      response => console.log(response)
+    );
   }
 }

@@ -27,7 +27,7 @@ export class Image {
       } else {
         this.pk = null;
         this.advert = null;
-        this.file = './../../../assets/img/product1.jpg';
+        this.file = './assets/img/no-image.jpg';
       }
   }
 }

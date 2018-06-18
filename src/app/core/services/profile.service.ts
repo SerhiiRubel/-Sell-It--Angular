@@ -14,8 +14,12 @@ export class ProfileService {
   }
   constructor(
     private http: HttpClient,
-    private session: SessionService) { }
+    private session: SessionService,
+  ) { }
   public getProfile() {
    return this.http.get(ApiUrls.profile);
+  }
+  public editProfile() {
+
   }
 }

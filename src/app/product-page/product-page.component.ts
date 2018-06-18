@@ -11,10 +11,10 @@ import {Product} from '../core/models/product';
 export class ProductPageComponent implements OnInit {
   constructor( public productService: ProductService ) {}
   public productList: Product[];
-  public page = 1;
+  public page = 0;
   public isLoading = false;
   ngOnInit() {
-    this.productService.getData()
+    this.productService.getData(this.page)
       .subscribe(
         response => {
           this.productList = response;

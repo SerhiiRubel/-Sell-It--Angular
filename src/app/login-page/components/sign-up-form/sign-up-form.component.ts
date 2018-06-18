@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../../core/services/auth.service';
+import {AuthDefaultService} from '../../../core/services/auth-default.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -11,7 +11,7 @@ import {AuthService} from '../../../core/services/auth.service';
 export class SignUpFormComponent implements OnInit {
 
   public signUpForm: FormGroup;
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthDefaultService) {
     this.signUpForm = new FormGroup({
       username: new FormControl('', [
         Validators.required

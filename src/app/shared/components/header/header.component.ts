@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
-import {AuthService} from '../../../core/services/auth.service';
+import {AuthDefaultService} from '../../../core/services/auth-default.service';
 import {ProfileService} from '../../../core/services/profile.service';
 
 @Component({
@@ -10,7 +10,7 @@ import {ProfileService} from '../../../core/services/profile.service';
 
 export class HeaderComponent implements OnInit{
   constructor(
-    private auth: AuthService,
+    private auth: AuthDefaultService,
     private profile: ProfileService) {}
   public currentUser;
   private logout = () => this.auth.logout();

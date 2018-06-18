@@ -1,6 +1,11 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../../core/services/auth.service';
+import {AuthDefaultService} from '../../../core/services/auth-default.service';
+
+import {
+  AuthService,
+  GoogleLoginProvider
+} from 'angular5-social-login';
 
 @Component({
   selector: 'app-sign-in-form' ,
@@ -20,7 +25,10 @@ export class SignInFormComponent implements OnInit {
   public email = this.signInForm.get('email');
   public password = this.signInForm.get('password');
   public errorMessage;
-  constructor(private auth: AuthService) {}
+  constructor(
+    private auth: AuthDefaultService,
+    private socialAuthService: AuthService
+  ) {}
   @Output() submitForm = new EventEmitter();
   handleSubmit() {
     this.submitForm.emit();
@@ -28,5 +36,10 @@ export class SignInFormComponent implements OnInit {
   }
   ngOnInit() {
   }
-
+  public socialSignIn() {
+    const socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => this.auth.googleLogin(userData.token)
+    );
+  }
 }

@@ -2,33 +2,54 @@
   [formGroup]="addAdvert"
   (submit)="handleSubmit()"
 >
-  <input
-    type="text"
-    formControlName="theme"
-  >
-  <textarea
-    cols="30"
-    rows="10"
-    formControlName="text"
-  ></textarea>
-  <input
-    type="text"
-    formControlName="price"
-  >
-  <input
-    type="text"
-    formControlName="currency"
-  >
-  <input
-    type="text"
-    formControlName="contractPrice"
-  >
-  <div [formGroup]="location" >
-    <input type="text" formControlName="name">
+  <label>
+    <span class="inputTitle">Theme</span>
+    <input
+      type="text"
+      formControlName="theme"
+    >
+  </label>
+  <label>
+    <span class="inputTitle">Description</span>
+    <textarea
+      cols="30"
+      rows="10"
+      formControlName="text"
+    ></textarea>
+  </label>
+  <label>
+    <span class="inputTitle">Price</span>
+    <input
+      type="text"
+      formControlName="price"
+    >
+  </label>
+  <label>
+    <span class="inputTitle">Currency</span>
+    <input
+      type="text"
+      formControlName="currency"
+    >
+  </label>
+  <label class="inputTitle">
+    <span class="inputTitle">Contract Price</span>
+    <input
+      type="checkbox"
+      formControlName="contractPrice"
+    >
+  </label>
+  <div formGroupName="location">
+    <label>
+      <span class="inputTitle">Location</span>
+      <input formControlName="name" type="text" >
+    </label>
   </div>
-  <input
-    type="checkbox"
-    formControlName="isActive"
-  >
+  <label>
+    <span class="inputTitle">Advert is active?</span>
+    <input
+      type="checkbox"
+      formControlName="isActive"
+    >
+  </label>
   <button type="submit"> Add advert </button>
 </form>

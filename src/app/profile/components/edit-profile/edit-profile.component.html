@@ -1,0 +1,12 @@
+<form action=""
+      [formGroup]="profileForm"
+      (submit)="onSubmit()"
+
+>
+  <input type="text" formControlName="username">
+  <input
+    type="file"
+    (change)="onChange($event)"
+  >
+  <button>Edit user</button>
+</form>

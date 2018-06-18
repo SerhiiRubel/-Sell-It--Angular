@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {AuthService} from '../core/services/auth.service';
+import {AuthDefaultService} from '../core/services/auth-default.service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   public isActive = true;
   constructor(
     private route: ActivatedRoute,
-    private auth: AuthService
+    private auth: AuthDefaultService
               ) {}
   changeTab(isActive: boolean) {
     this.isActive = isActive;

@@ -4,20 +4,22 @@ import {ApiUrls} from '../api-urls';
 import {ILogin, IRegistration} from '../models/forms';
 import {tap} from 'rxjs/operators';
 import {CookieService} from 'ng2-cookies';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {ProfileService} from './profile.service';
+import {SessionService} from './session.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  public currentUser = new BehaviorSubject(false);
+export class AuthDefaultService {
+  public isLogin$ = new BehaviorSubject(false);
   constructor(
     private http: HttpClient,
     private cookie: CookieService,
     private route: Router,
-    private profile: ProfileService
+    private profile: ProfileService,
+    private session: SessionService
   ) {
   }
 
@@ -32,9 +34,9 @@ export class AuthService {
       tap(
         response => {
           this.cookie.set('token', response['token']);
-          // this.currentUser.next(response['user']);
           this.profile.profile$.next(response['user']);
-          localStorage.setItem('user', JSON.stringify(response['user']));
+          this.session.user = response['user'];
+          this.isLogin$.next(true);
           this.route.navigate(['']);
         }
       )
@@ -44,14 +46,22 @@ export class AuthService {
   public logout() {
     return this.http.get(ApiUrls.logout).subscribe(
       () => {
-        this.cookie.delete('token');
-        this.currentUser.next(false);
+        this.session.token = null;
+        this.session.user = null;
+        this.isLogin$.next(false);
+        this.profile.profile$.next(false);
       }
     );
   }
   public verifyEmail(key) {
     console.log('yes');
     this.http.post(ApiUrls.verifyEmail, key).subscribe(
+      response => console.log(response)
+    );
+  }
+  public googleLogin(token: string) {
+    console.log(token);
+    this.http.post(ApiUrls.google, {access_token: token}).subscribe(
       response => console.log(response)
     );
   }

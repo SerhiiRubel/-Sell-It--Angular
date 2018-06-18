@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {ApiUrls} from '../../../core/api-urls';
+import {ProductService} from '../../../core/services/product.service';
+
 
 @Component({
   selector: 'app-add-advert-form',
   templateUrl: './add-advert-form.component.html',
-  styleUrls: ['./add-advert-form.component.css']
+  styleUrls: ['./add-advert-form.component.scss']
 })
 export class AddAdvertFormComponent implements OnInit {
   public addAdvert: FormGroup = new FormGroup({
@@ -14,14 +18,16 @@ export class AddAdvertFormComponent implements OnInit {
     currency: new FormControl(),
     contractPrice: new FormControl(),
     location: new FormGroup({
-      name: new FormControl()
+      name: new FormControl('', Validators.required)
     }),
     isActive: new FormControl()
   });
-  constructor() { }
+  constructor(
+    private productService: ProductService
+  ) { }
   ngOnInit() {
   }
-  public handleSubmit() {
-    console.log(this.addAdvert.value);
+  public handleSubmit(form) {
+    this.productService.addAdvert(this.addAdvert.value);
   }
 }
