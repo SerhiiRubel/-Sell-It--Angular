@@ -1,6 +1,6 @@
 export class Product {
   public pk: number;
-  public owner: Owner[];
+  public owner: Owner;
   public theme: string;
   public price: number;
   public currency: number;
@@ -44,7 +44,7 @@ export class Owner {
     this.email = json.email;
     this.firstName = json.first_name;
     this.lastName = json.last_name;
-    this.userName = json.user_name;
+    this.userName = json.userName;
     this.id = json.id;
   }
 }

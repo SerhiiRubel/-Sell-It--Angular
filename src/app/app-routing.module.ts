@@ -7,7 +7,7 @@ import {LoginPageComponent} from './login-page/login-page.component';
 import {ProductResolve} from './detail-page/product.resolve';
 import {AddAdvertComponent} from './add-advert/add-advert.component';
 import {ProfileComponent} from './profile/profile.component';
-import {LoginGuard} from './core/guards/login.guard';
+import {AuthGuard} from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,9 +23,8 @@ const routes: Routes = [
       product: ProductResolve
     }
   },
-  {path: 'profile', component: ProfileComponent},
-  { path: 'login', component: LoginPageComponent, canActivate: [LoginGuard] },
-  { path: 'profile', component: ProfileComponent },
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginPageComponent, canActivate: [AuthGuard] },
   { path: 'addAdvert', component: AddAdvertComponent },
   { path: '**', component: NotFoundComponent }
 ];

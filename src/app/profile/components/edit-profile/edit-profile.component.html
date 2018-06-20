@@ -1,12 +1,42 @@
-<form action=""
-      [formGroup]="profileForm"
-      (submit)="onSubmit()"
-
+<form
+  [formGroup]="profileForm"
+  (submit)="onSubmit()"
+  class="editProfileForm"
 >
-  <input type="text" formControlName="username">
-  <input
-    type="file"
-    (change)="onChange($event)"
-  >
-  <button>Edit user</button>
+  <div class="avatar">
+    <img src="{{currentUser.avatar}}" alt="">
+  </div>
+  <label class="editProfileForm__label">
+    <span class="editProfileForm__titleInput">Change avatar</span>
+    <input
+      class="editProfileForm__input editProfileForm__input--file"
+      type="file"
+      (change)="onChange($event)"
+    >
+  </label>
+  <label class="editProfileForm__label">
+    <span class="editProfileForm__titleInput">Username</span>
+    <input type="text" formControlName="username" class="editProfileForm__input">
+  </label>
+  <label class="editProfileForm__label">
+    <span class="editProfileForm__titleInput">First name</span>
+    <input type="text" formControlName="first_name" class="editProfileForm__input">
+  </label>
+  <label class="editProfileForm__label">
+    <span class="editProfileForm__titleInput">Last name</span>
+    <input type="text" formControlName="last_name" class="editProfileForm__input">
+  </label>
+  <label formGroupName="location" class="editProfileForm__label">
+    <span class="editProfileForm__titleInput">Location</span>
+    <input type="text" formControlName="name" class="editProfileForm__input">
+  </label>
+  <label class="editProfileForm__label">
+    <span class="editProfileForm__titleInput">Color scheme</span>
+    <input type="text" formControlName="color_scheme" class="editProfileForm__input">
+  </label>
+  <label class="editProfileForm__label">
+    <span class="editProfileForm__titleInput">Language</span>
+    <input type="text" formControlName="language" class="editProfileForm__input">
+  </label>
+  <button class="editProfileForm__btn">Edit user</button>
 </form>

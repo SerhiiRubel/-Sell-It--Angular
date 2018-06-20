@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {ApiUrls} from '../../../core/api-urls';
 import {ProductService} from '../../../core/services/product.service';
 
 
@@ -11,15 +9,19 @@ import {ProductService} from '../../../core/services/product.service';
   styleUrls: ['./add-advert-form.component.scss']
 })
 export class AddAdvertFormComponent implements OnInit {
+  @Output() addAdvertForm = new EventEmitter();
+  public images: string[] = [];
   public addAdvert: FormGroup = new FormGroup({
-    theme: new FormControl(),
+    theme: new FormControl('', [
+      Validators.required
+    ]),
     text: new FormControl(),
     price: new FormControl(),
-    currency: new FormControl(),
+    currency: new FormControl('1'),
     contractPrice: new FormControl(),
-    location: new FormGroup({
-      name: new FormControl('', Validators.required)
-    }),
+    // location: new FormGroup({
+    //   name: new FormControl('', Validators.required)
+    // }),
     isActive: new FormControl()
   });
   constructor(
@@ -27,7 +29,17 @@ export class AddAdvertFormComponent implements OnInit {
   ) { }
   ngOnInit() {
   }
-  public handleSubmit(form) {
-    this.productService.addAdvert(this.addAdvert.value);
+  public imgToArray(e) {
+    let images = e.target.files;
+    this.images.length = 0;
+    for ( let image of images ) {
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onloadend = () => this.images.push(reader.result);
+    }
+  }
+  public handleSubmit() {
+    this.addAdvertForm.emit();
+    this.productService.addAdvert(this.addAdvert.value, this.images);
   }
 }

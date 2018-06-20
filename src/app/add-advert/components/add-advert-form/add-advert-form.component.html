@@ -9,6 +9,22 @@
       formControlName="theme"
     >
   </label>
+  <label class="imgInput">
+    <span class="imgInput__title">Add images</span>
+    <input
+      class="imgInput__item"
+      type="file"
+      multiple
+      (change)="imgToArray($event)">
+  </label>
+  <div class="prevImgWrap">
+    <img
+      *ngFor="let image of images"
+      src="{{image}}"
+      alt="image"
+      class="prevImgWrap__item"
+    >
+  </div>
   <label>
     <span class="inputTitle">Description</span>
     <textarea
@@ -38,12 +54,12 @@
       formControlName="contractPrice"
     >
   </label>
-  <div formGroupName="location">
-    <label>
-      <span class="inputTitle">Location</span>
-      <input formControlName="name" type="text" >
-    </label>
-  </div>
+  <!--<div formGroupName="location">-->
+    <!--<label>-->
+      <!--<span class="inputTitle">Location</span>-->
+      <!--<input formControlName="name" type="text" >-->
+    <!--</label>-->
+  <!--</div>-->
   <label>
     <span class="inputTitle">Advert is active?</span>
     <input

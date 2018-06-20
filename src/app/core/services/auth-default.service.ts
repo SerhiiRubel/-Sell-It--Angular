@@ -46,21 +46,22 @@ export class AuthDefaultService {
   public logout() {
     return this.http.get(ApiUrls.logout).subscribe(
       () => {
-        this.session.token = null;
-        this.session.user = null;
+        this.session.token = '';
+        this.session.user = '';
         this.isLogin$.next(false);
         this.profile.profile$.next(false);
       }
     );
   }
+  public resetPassword() {
+    console.log('You wanna reset password?');
+  }
   public verifyEmail(key) {
-    console.log('yes');
     this.http.post(ApiUrls.verifyEmail, key).subscribe(
       response => console.log(response)
     );
   }
   public googleLogin(token: string) {
-    console.log(token);
     this.http.post(ApiUrls.google, {access_token: token}).subscribe(
       response => console.log(response)
     );

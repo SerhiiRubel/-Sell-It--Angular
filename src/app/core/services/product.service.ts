@@ -2,8 +2,9 @@ import {HttpClient} from '@angular/common/http';
 import {ApiUrls} from '../api-urls';
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
-import {map} from 'rxjs/operators';
+import {concatMap, map, switchMap, tap} from 'rxjs/operators';
 import {FormGroup} from '@angular/forms';
+import {from} from 'rxjs';
 
 @Injectable()
 export class ProductService {
@@ -27,9 +28,16 @@ export class ProductService {
   getProduct(id: number) {
     return this.http.get(`${ApiUrls.adverts}/${id}`);
   }
-  public addAdvert(form: FormGroup) {
-    this.http.post( ApiUrls.adverts, form).subscribe(
-      response => console.log(response)
+  public addAdvert(form: FormGroup, images: string[]) {
+    this.http.post( ApiUrls.adverts, form)
+      .subscribe(
+      v => {
+        let response = v;
+        from(images)
+          .pipe(
+            concatMap( (file) => this.http.post(`${ApiUrls.adverts}/${response['pk']}/image/`, {advert: response, file: file}) )
+          ).subscribe(value => console.log(value));
+      }
     );
   }
 }

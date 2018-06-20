@@ -1,7 +1,8 @@
 form {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
+  width: 50vw;
+  min-width: 320px;
   background-color: var( --blue );
   padding: 15px;
   align-items: center;
@@ -28,4 +29,31 @@ form {
 
 input {
   border-bottom: 4px solid var(--white);
+}
+
+.imgInput {
+  font-size: 22px;
+  padding: 15px 25px;
+  background-color: var( --whiteLoginPage );
+  cursor: pointer;
+  margin-bottom: 15px;
+  &__item {
+    display: none;
+  }
+}
+
+.prevImgWrap {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+  &__item {
+    max-width: 60px;
+    max-height: 50px;
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

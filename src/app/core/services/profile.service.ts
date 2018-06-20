@@ -8,7 +8,7 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-  public profile$ = new BehaviorSubject(false);
+  public profile$ = new BehaviorSubject(null);
   public get profile() {
     return this.profile$.asObservable();
   }
@@ -19,7 +19,9 @@ export class ProfileService {
   public getProfile() {
    return this.http.get(ApiUrls.profile);
   }
-  public editProfile() {
-
+  public editProfile(form) {
+    this.http.patch(ApiUrls.profile, form).subscribe(
+      user => this.profile$.next(user)
+    );
   }
 }

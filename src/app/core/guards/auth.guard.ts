@@ -6,8 +6,8 @@ import {AuthDefaultService} from '../services/auth-default.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
-  isLogin: boolean;
+export class AuthGuard implements CanActivate {
+  canActivated: boolean;
   constructor(private auth: AuthDefaultService) {
 
   }
@@ -15,9 +15,16 @@ export class LoginGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     this.auth.isLogin$.subscribe(
-      response => response ? this.isLogin = false : this.isLogin = true
+      v => {
+        if (v && state.url === '/login') {
+          this.canActivated = false;
+        } else if (!v && state.url !== '/login')  {
+          this.canActivated = false;
+        } else {
+          this.canActivated = true;
+        }
+      }
     );
-    console.log(this.isLogin);
-    return this.isLogin;
+    return this.canActivated;
   }
 }
