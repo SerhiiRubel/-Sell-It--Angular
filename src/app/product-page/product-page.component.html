@@ -5,7 +5,7 @@
         *ngFor="let product of productList"
         class="productItem"
         [title]="product.theme"
-        [srcImg]="product.images.file"
+        [srcImg]="product.images[0]?.file"
         [routerLink]="['detail', product.pk]"
       >
       </app-product-item>

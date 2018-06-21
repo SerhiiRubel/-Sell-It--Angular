@@ -1,17 +1,29 @@
 export class Product {
-  public pk: number;
-  public owner: Owner;
-  public theme: string;
-  public price: number;
+  public activatedAt: string;
+  public category: string;
+  public contractPrice: boolean;
   public currency: number;
-  public images: Image;
+  public images?: Image[];
+  public isActive: boolean;
+  public location;
+  public owner: Owner;
+  public pk: number;
+  public price: number;
+  public text: string;
+  public theme: string;
   constructor(json: any) {
+    this.activatedAt = json.activated_at;
+    this.category = json.category;
+    this.images = json.images;
+    this.isActive = json.is_active;
+    this.location = json.location;
     this.pk = json.pk;
-    this.owner = json.owner;
+    this.contractPrice = json.contract_price;
+    this.owner = new Owner(json.owner);
     this.theme = json.theme;
     this.price = json.price;
+    this.text = json.text;
     this.currency = json.currency;
-    this.images = new Image(json.images[0]);
   }
 }
 

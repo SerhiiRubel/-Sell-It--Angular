@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
 import {concatMap, map, switchMap, tap} from 'rxjs/operators';
 import {FormGroup} from '@angular/forms';
-import {from} from 'rxjs';
+import {from, Observable} from 'rxjs';
 
 @Injectable()
 export class ProductService {
@@ -19,7 +19,6 @@ export class ProductService {
     return this.http.get<any>(ApiUrls.adverts, {params: params})
       .pipe(
         map( response => {
-          console.log(response);
           response.results.forEach(item => this.productData.push(new Product(item)));
           return this.productData;
         })
@@ -31,12 +30,14 @@ export class ProductService {
   public addAdvert(form: FormGroup, images: string[]) {
     this.http.post( ApiUrls.adverts, form)
       .subscribe(
-      v => {
-        let response = v;
+      response => {
         from(images)
           .pipe(
-            concatMap( (file) => this.http.post(`${ApiUrls.adverts}/${response['pk']}/image/`, {advert: response, file: file}) )
-          ).subscribe(value => console.log(value));
+            concatMap( (file) => this.http.post(`${ApiUrls.adverts}/${response['pk']}/image/`,{advert: response, file: file}) )
+          ).subscribe(value => {
+            console.log(value);
+            console.log(images);
+          });
       }
     );
   }

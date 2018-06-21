@@ -1,4 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Owner} from '../../../core/models/product';
 
 @Component({
   selector: 'app-product-item',
@@ -9,7 +10,7 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 export class ProductItemComponent implements OnInit {
   @Input() title: string;
   @Input() srcImg: string;
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

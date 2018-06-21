@@ -53,9 +53,7 @@ export class AuthDefaultService {
       }
     );
   }
-  public resetPassword() {
-    console.log('You wanna reset password?');
-  }
+  public resetPassword() {}
   public verifyEmail(key) {
     this.http.post(ApiUrls.verifyEmail, key).subscribe(
       response => console.log(response)

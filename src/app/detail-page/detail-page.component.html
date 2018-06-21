@@ -26,28 +26,12 @@
       <div class="productDescrHead">
         <h3 class="productDescr__title">{{product.theme}}</h3>
         <span class="productDesct__author">from
-              <a href="#" class="linkToUserPage linkToUserPage--inProductDescr linkToUserPage--blue"> Alis Kim </a>
+              <a href="#" class="linkToUserPage linkToUserPage--inProductDescr linkToUserPage--blue"> {{product.owner.firstName}}, {{product.owner.lastName}}</a>
             </span>
         <span class="productDescr__price productDescr__price--greenColor">{{product.price}} $</span>
       </div>
       <div class="productDescr__wisiwygEditer">
         {{product.text}}
-        <!--<ul>-->
-          <!--<li>Some description text from WYSIWYG editer</li>-->
-          <!--<li>Can be <b>BOLD</b> <i>italic</i> </li>-->
-          <!--<li>Can have list :</li>-->
-          <!--<li>-->
-            <!--<ol>-->
-              <!--<li>First</li>-->
-              <!--<li>Second</li>-->
-            <!--</ol>-->
-          <!--</li>-->
-          <!--<li><b>And anything from WYSIWYG editor</b></li>-->
-          <!--<li><b>Some line</b></li>-->
-          <!--<li>Some line</li>-->
-          <!--<li><i>Some line</i></li>-->
-          <!--<li><b>Finished on this line</b></li>-->
-        <!--</ul>-->
       </div>
     </div>
   </article>
@@ -56,7 +40,7 @@
       <h4 class="chatTitle">
         <span class="chatTitle__firstWord">Chat</span>
         with
-        <a href="#" class="linkToUserPage linkToUserPage--inChat linkToUserPage--blue">Alis Kim</a>
+        <a href="" class="linkToUserPage linkToUserPage--inChat linkToUserPage--blue">Alis Kim</a>
       </h4>
       <div class="commentsBox">
         <div class="commentsItem commentsItem--left">
